@@ -21,7 +21,7 @@ const userSchema = new Schema({
     required: true,
   },
   // set savedLists to be an array of data that adheres to the listSchema
-  savedLists: [listSchema],
+  // savedLists: [listSchema],
 });
 
 // hash user password

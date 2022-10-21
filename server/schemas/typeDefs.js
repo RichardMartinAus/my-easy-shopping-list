@@ -8,17 +8,6 @@ const typeDefs = gql`
     savedLists: [List]
   }
 
-  type List {
-    listID: ID!
-    listName: String!
-    items: [Item]
-  }
-
-  type Item {
-    itemID: ID!
-    itemName: String
-  }
-
   type Auth {
     token: ID!
     user: User
@@ -26,23 +15,44 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    list(listID: ID!): List
-  }
-
-  input SaveListInput {
-    items: [String]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
-    addList(listData: SaveListInput): User
-    updateList(listID: ID!, listData: SaveListInput): List
-    removeList(listID: ID!): User
-    addItem(itemName: String!): List
-    removeItem(itemID: ID!): List
   }
 `;
 
 module.exports = typeDefs;
+
+// type List {
+//   listID: ID!
+//   listName: String!
+//   items: [Item]
+// }
+
+// type Item {
+//   itemID: ID!
+//   itemName: String
+// }
+
+// type Query {
+//   user: User
+//   list(listID: ID!): List
+// }
+
+// input SaveListInput {
+//   items: [String]
+// }
+
+// type Mutation {
+//   login(email: String!, password: String!): Auth
+//   addUser(username: String!, email: String!, password: String!): Auth
+//   updateUser(username: String!, email: String!, password: String!): User
+//   addList(listData: SaveListInput): User
+//   updateList(listID: ID!, listData: SaveListInput): List
+//   removeList(listID: ID!): User
+//   addItem(itemName: String!): List
+//   removeItem(itemID: ID!): List
+// }

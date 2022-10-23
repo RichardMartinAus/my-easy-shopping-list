@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Alert, Button, Form, Input } from 'antd';
 
 // Import Apollo useMutation and ADD_USER mutation
 import { useMutation } from '@apollo/client';
@@ -56,75 +56,89 @@ const SignupForm = () => {
 
   return (
     <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        noValidate
+        validated={validated}
+        onSubmit={handleFormSubmit}
+        autoComplete="on"
+      >
         <Alert
-          dismissible
+          message="Something went wrong with your login credentials!"
+          type="error"
+          closable
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+        />
+        <Form.Item
+          label="Username"
+          name="username"
+          value={userFormData.username}
+          onChange={handleInputChange}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your username!',
+            },
+          ]}
         >
-          Something went wrong with your signup!
-        </Alert>
+          <Input />
+        </Form.Item>
 
-        <Form.Group>
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your username"
-            name="username"
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Username is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Your email address"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={
-            !(
-              userFormData.username &&
-              userFormData.email &&
-              userFormData.password
-            )
-          }
-          type="submit"
-          variant="success"
+        <Form.Item
+          label="Email"
+          name="email"
+          value={userFormData.email}
+          onChange={handleInputChange}
+          rules={[
+            {
+              required: true,
+              type: 'email',
+              message: 'Please input your email address!',
+            },
+          ]}
         >
-          Submit
-        </Button>
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Password"
+          name="password"
+          onChange={handleInputChange}
+          value={userFormData.password}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button
+            disabled={!(userFormData.email && userFormData.password)}
+            type="primary"
+            htmlType="submit"
+          >
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
     </>
   );

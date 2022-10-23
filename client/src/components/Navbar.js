@@ -1,29 +1,56 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, PageHeader } from 'antd';
-// import SignUpForm from './SignupForm';
-// import LoginForm from './LoginForm';
+import { Breadcrumb, Layout, Menu } from 'antd';
 
 import Auth from '../utils/auth';
 
-const AppNavbar = () => {
-  // set modal display state
-  //   const [showModal, setShowModal] = useState(false);
+const { Header, Content, Footer } = Layout;
 
+const Nav = () => {
   return (
-    <div className="site-page-header-ghost-wrapper">
-      <PageHeader
-        ghost={false}
-        title="My Easy Shopping List"
-        extra={[
-          <Button key="2">Home</Button>,
-          <Button key="1" type="primary">
-            Login
-          </Button>,
-        ]}
-      ></PageHeader>
+    <div>
+      <Layout className="layout">
+        <Header>
+          <div className="logo" />
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            items={new Array(15).fill(null).map((_, index) => {
+              const key = index + 1;
+              return {
+                key,
+                label: `nav ${key}`,
+              };
+            })}
+          />
+        </Header>
+        <Content
+          style={{
+            padding: '0 50px',
+          }}
+        >
+          <Breadcrumb
+            style={{
+              margin: '16px 0',
+            }}
+          >
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className="site-layout-content">Content</div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          Created by Richard Martin using React and Ant Design ©2022
+        </Footer>
+      </Layout>
     </div>
   );
 };
 
-export default AppNavbar;
+export default Nav;

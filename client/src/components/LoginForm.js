@@ -1,6 +1,6 @@
 // see SignupForm.js for comments
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Alert, Button, Form, Input } from 'antd';
 
 // Import Apoll userMutation and LOGIN_USER mutation
 import { useMutation } from '@apollo/client';
@@ -9,7 +9,10 @@ import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [userFormData, setUserFormData] = useState({
+    username: '',
+    password: '',
+  });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -49,51 +52,73 @@ const LoginForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form
+        name="basic"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
+        initialValues={{
+          remember: true,
+        }}
+        noValidate
+        validated={validated}
+        onSubmit={handleFormSubmit}
+        autoComplete="on"
+      >
         <Alert
-          dismissible
+          message="Something went wrong with your login credentials!"
+          type="error"
+          closable
           onClose={() => setShowAlert(false)}
           show={showAlert}
-          variant="danger"
+        />
+        <Form.Item
+          label="Username"
+          name="username"
+          value={userFormData.username}
+          onChange={handleInputChange}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your username!',
+            },
+          ]}
         >
-          Something went wrong with your login credentials!
-        </Alert>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Your email"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+          <Input />
+        </Form.Item>
 
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
+        <Form.Item
+          label="Password"
+          name="password"
+          onChange={handleInputChange}
+          value={userFormData.password}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+          ]}
         >
-          Submit
-        </Button>
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button
+            disabled={!(userFormData.email && userFormData.password)}
+            type="primary"
+            htmlType="submit"
+          >
+            Sign up
+          </Button>
+        </Form.Item>
       </Form>
     </>
   );

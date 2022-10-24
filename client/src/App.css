@@ -16,3 +16,16 @@
   float: right;
   margin: 16px 0 16px 24px;
 }
+
+.logo {
+  width: 100%;
+  max-width: 280px;
+  height: 40px;
+}
+
+.fixed-footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}

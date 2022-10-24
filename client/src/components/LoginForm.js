@@ -1,8 +1,7 @@
-// see SignupForm.js for comments
 import React, { useState } from 'react';
 import { Alert, Button, Form, Input } from 'antd';
 
-// Import Apoll userMutation and LOGIN_USER mutation
+// Import Apollo userMutation and LOGIN_USER mutation
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 
@@ -52,29 +51,30 @@ const LoginForm = () => {
 
   return (
     <>
+      <h1>Please login below</h1>
       <Form
         name="basic"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
+        // labelCol={{
+        //   span: 8,
+        // }}
+        // wrapperCol={{
+        //   span: 16,
+        // }}
         initialValues={{
           remember: true,
         }}
         noValidate
         validated={validated}
         onSubmit={handleFormSubmit}
-        autoComplete="on"
+        autoComplete="off"
       >
-        <Alert
+        {/* <Alert
           message="Something went wrong with your login credentials!"
           type="error"
           closable
           onClose={() => setShowAlert(false)}
           show={showAlert}
-        />
+        /> */}
         <Form.Item
           label="Username"
           name="username"
@@ -106,20 +106,24 @@ const LoginForm = () => {
         </Form.Item>
 
         <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
+        // wrapperCol={{
+        //   offset: 8,
+        //   span: 16,
+        // }}
         >
           <Button
-            disabled={!(userFormData.email && userFormData.password)}
+            // disabled={!(userFormData.username && userFormData.password)}
             type="primary"
             htmlType="submit"
+            style={{ float: 'left' }}
           >
-            Sign up
+            Login
           </Button>
         </Form.Item>
       </Form>
+      <Button type="primary" htmlType="submit" style={{ float: 'left' }}>
+        Click here to signup!
+      </Button>
     </>
   );
 };

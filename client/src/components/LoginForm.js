@@ -12,19 +12,20 @@ function LoginForm(props) {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const onFinish = async (values) => {
+    console.log(values);
+
     try {
       const mutationResponse = await login({
         variables: {
-          username: formState.username,
-          password: formState.password,
+          username: values.username,
+          password: values.password,
         },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -52,16 +53,9 @@ function LoginForm(props) {
         }}
         noValidate
         // validated={validated}
-        onSubmit={handleFormSubmit}
+        onFinish={onFinish}
         autoComplete="off"
       >
-        {/* <Alert
-          message="Something went wrong with your login credentials!"
-          type="error"
-          closable
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-        /> */}
         <Form.Item
           label="Username"
           name="username"
@@ -98,12 +92,7 @@ function LoginForm(props) {
         //   span: 16,
         // }}
         >
-          <Button
-            // disabled={!(userFormData.username && userFormData.password)}
-            type="primary"
-            htmlType="submit"
-            style={{ float: 'left' }}
-          >
+          <Button type="primary" htmlType="submit" style={{ float: 'left' }}>
             Login
           </Button>
         </Form.Item>

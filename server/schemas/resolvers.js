@@ -21,11 +21,11 @@ const resolvers = {
 
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError('No user with that email address!');
+        throw new AuthenticationError('No user with that username!');
       }
 
       const correctPw = await user.isCorrectPassword(password);

@@ -14,17 +14,22 @@ function SignupForm(props) {
   });
   const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        username: formState.username,
-        email: formState.email,
-        password: formState.password,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+  const onFinish = async (values) => {
+    console.log(values);
+
+    try {
+      const mutationResponse = await addUser({
+        variables: {
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (event) => {
@@ -50,7 +55,7 @@ function SignupForm(props) {
         }}
         noValidate
         // validated={validated}
-        onSubmit={handleFormSubmit}
+        onFinish={onFinish}
         autoComplete="off"
       >
         <Form.Item
@@ -110,6 +115,7 @@ function SignupForm(props) {
           </Button>
         </Form.Item>
       </Form>
+      <Link to="/login">← Go to Login</Link>
     </>
   );
 }

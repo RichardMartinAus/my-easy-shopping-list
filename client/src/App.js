@@ -14,6 +14,7 @@ import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Userdash from './pages/UserDash';
 import PageHeader from './components/Header';
 import PageFooter from './components/Footer';
 
@@ -46,7 +47,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            {/* <Route path="/user" element={<Userdash />} /> */}
+            <Route path="/user" element={<Userdash />} />
           </Routes>
           <PageFooter />
         </div>

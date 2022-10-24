@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Button, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 
 // Import Apollo userMutation and LOGIN_USER mutation
 import { useMutation } from '@apollo/client';
@@ -8,45 +8,31 @@ import { LOGIN } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({
-    username: '',
-    password: '',
-  });
-  const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-
-  const [login, { error, data }] = useMutation(LOGIN);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
-  };
+function LoginForm(props) {
+  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
     try {
-      const { data } = await login({
-        variables: { ...userFormData },
+      const mutationResponse = await login({
+        variables: {
+          username: formState.username,
+          password: formState.password,
+        },
       });
-
-      Auth.login(data.login.token);
-    } catch (err) {
-      console.error(err);
-      setShowAlert(true);
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
     }
+  };
 
-    setUserFormData({
-      email: '',
-      password: '',
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
     });
   };
 
@@ -65,7 +51,7 @@ const LoginForm = () => {
           remember: true,
         }}
         noValidate
-        validated={validated}
+        // validated={validated}
         onSubmit={handleFormSubmit}
         autoComplete="off"
       >
@@ -79,8 +65,8 @@ const LoginForm = () => {
         <Form.Item
           label="Username"
           name="username"
-          value={userFormData.username}
-          onChange={handleInputChange}
+          value={formState.username}
+          onChange={handleChange}
           rules={[
             {
               required: true,
@@ -94,8 +80,8 @@ const LoginForm = () => {
         <Form.Item
           label="Password"
           name="password"
-          onChange={handleInputChange}
-          value={userFormData.password}
+          onChange={handleChange}
+          value={formState.password}
           rules={[
             {
               required: true,
@@ -127,6 +113,6 @@ const LoginForm = () => {
       </Button>
     </>
   );
-};
+}
 
 export default LoginForm;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Alert, Button, Form, Input } from 'antd';
 
 // Import Apollo userMutation and LOGIN_USER mutation
@@ -122,7 +123,7 @@ const LoginForm = () => {
         </Form.Item>
       </Form>
       <Button htmlType="submit" style={{ float: 'left' }}>
-        Click here to signup!
+        <Link to="/signup">Click here to signup!</Link>
       </Button>
     </>
   );

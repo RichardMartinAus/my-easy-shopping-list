@@ -121,7 +121,7 @@ const LoginForm = () => {
           </Button>
         </Form.Item>
       </Form>
-      <Button type="primary" htmlType="submit" style={{ float: 'left' }}>
+      <Button htmlType="submit" style={{ float: 'left' }}>
         Click here to signup!
       </Button>
     </>

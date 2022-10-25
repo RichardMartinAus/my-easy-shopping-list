@@ -6,7 +6,7 @@ import { ADD_USER } from '../utils/mutations';
 
 import { Button, Form, Input } from 'antd';
 
-function SignupForm(props) {
+function SignupForm() {
   const [formState, setFormState] = useState({
     username: '',
     email: '',
@@ -15,8 +15,6 @@ function SignupForm(props) {
   const [addUser] = useMutation(ADD_USER);
 
   const onFinish = async (values) => {
-    console.log(values);
-
     try {
       const mutationResponse = await addUser({
         variables: {

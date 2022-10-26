@@ -15,7 +15,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Userdash from './pages/UserDash';
-import PageHeader from './components/Header';
+// import PageHeader from './components/Header';
 import PageFooter from './components/Footer';
 
 const httpLink = createHttpLink({
@@ -42,7 +42,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <PageHeader />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

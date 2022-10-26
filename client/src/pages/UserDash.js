@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 import { Layout } from 'antd';
+import PageHeader from '../components/Header';
 
 const { Content } = Layout;
 
@@ -15,6 +16,7 @@ const Userdash = () => {
 
   return (
     <div>
+      <PageHeader />
       <Content
         style={{
           padding: '50px 50px',

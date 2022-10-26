@@ -26,7 +26,7 @@ function LoginForm(props) {
       const token = mutationResponse.data.login.token;
       Auth.login(token);
       // useNavigate
-      navigate('/user');
+      // navigate('/user');
       window.location.reload();
     } catch (error) {
       console.log(error);

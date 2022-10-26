@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form, Input } from 'antd';
 
 // Import Apollo userMutation and LOGIN_USER mutation
@@ -11,6 +11,7 @@ import Auth from '../utils/auth';
 function LoginForm(props) {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     console.log(values);
@@ -24,6 +25,8 @@ function LoginForm(props) {
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
+      // useNavigate
+      navigate('/user');
     } catch (error) {
       console.log(error);
     }

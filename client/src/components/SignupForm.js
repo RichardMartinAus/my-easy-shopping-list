@@ -15,6 +15,10 @@ function SignupForm() {
   const [addUser] = useMutation(ADD_USER);
   const navigate = useNavigate();
 
+  const refreshPage = () => {
+    navigate(0);
+  };
+
   const onFinish = async (values) => {
     try {
       const mutationResponse = await addUser({
@@ -26,8 +30,9 @@ function SignupForm() {
       });
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
+      // useNavigate
       navigate('/user');
-      window.location.reload();
+      refreshPage();
     } catch (error) {
       console.log(error);
     }

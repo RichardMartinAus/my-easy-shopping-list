@@ -13,6 +13,10 @@ function LoginForm(props) {
   const [login, { error }] = useMutation(LOGIN);
   const navigate = useNavigate();
 
+  const refreshPage = () => {
+    navigate(0);
+  };
+
   const onFinish = async (values) => {
     console.log(values);
 
@@ -27,6 +31,7 @@ function LoginForm(props) {
       Auth.login(token);
       // useNavigate
       navigate('/user');
+      refreshPage();
       window.location.reload();
     } catch (error) {
       console.log(error);

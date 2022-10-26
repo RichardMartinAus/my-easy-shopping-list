@@ -26,11 +26,16 @@ function LoginForm(props) {
       const token = mutationResponse.data.login.token;
       Auth.login(token);
       // useNavigate
-      // navigate('/user');
-      window.location.reload();
+      navigate('/user');
     } catch (error) {
       console.log(error);
     }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
   };
 
   const handleChange = (event) => {

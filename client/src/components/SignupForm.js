@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
@@ -13,6 +13,7 @@ function SignupForm() {
     password: '',
   });
   const [addUser] = useMutation(ADD_USER);
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     try {
@@ -25,6 +26,7 @@ function SignupForm() {
       });
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
+      navigate('/user');
     } catch (error) {
       console.log(error);
     }

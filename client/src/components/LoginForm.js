@@ -14,9 +14,9 @@ function LoginForm(props) {
   const navigate = useNavigate();
 
   // used this function to refresh page when navigating from SO: https://stackoverflow.com/questions/46820682/how-do-i-reload-a-page-with-react-router
-  const refreshPage = () => {
-    navigate(0);
-  };
+  // const refreshPage = () => {
+  //   navigate(0);
+  // };
 
   const onFinish = async (values) => {
     console.log(values);
@@ -32,7 +32,7 @@ function LoginForm(props) {
       Auth.login(token);
       // useNavigate
       navigate('/user');
-      refreshPage();
+      // refreshPage();
     } catch (error) {
       console.log(error);
     }

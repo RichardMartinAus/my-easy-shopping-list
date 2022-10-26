@@ -15,6 +15,7 @@ function SignupForm() {
   const [addUser] = useMutation(ADD_USER);
   const navigate = useNavigate();
 
+  // used this function to refresh page when navigating from SO: https://stackoverflow.com/questions/46820682/how-do-i-reload-a-page-with-react-router
   const refreshPage = () => {
     navigate(0);
   };

@@ -13,6 +13,7 @@ function LoginForm(props) {
   const [login, { error }] = useMutation(LOGIN);
   const navigate = useNavigate();
 
+  // used this function to refresh page when navigating from SO: https://stackoverflow.com/questions/46820682/how-do-i-reload-a-page-with-react-router
   const refreshPage = () => {
     navigate(0);
   };
@@ -32,7 +33,6 @@ function LoginForm(props) {
       // useNavigate
       navigate('/user');
       refreshPage();
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }

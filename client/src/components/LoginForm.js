@@ -27,6 +27,7 @@ function LoginForm(props) {
       Auth.login(token);
       // useNavigate
       navigate('/user');
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

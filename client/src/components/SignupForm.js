@@ -27,6 +27,7 @@ function SignupForm() {
       const token = mutationResponse.data.addUser.token;
       Auth.login(token);
       navigate('/user');
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }

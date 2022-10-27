@@ -1,8 +1,9 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
-import { Layout } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import PageHeader from '../components/Header';
+import SavedLists from '../components/SavedLists';
 
 const { Content } = Layout;
 
@@ -23,12 +24,17 @@ const Userdash = () => {
         }}
       >
         <div className="site-layout-content">
-          <h1>User Dashboard</h1>
+          <Row>
+            <h1>User Dashboard</h1>
+          </Row>
           {user ? (
             <h2>
               Welcome back, <strong>{user.username}</strong>!
             </h2>
           ) : null}
+          <Row>
+            <SavedLists />
+          </Row>
         </div>
       </Content>
     </div>

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
-import Nav from '../components/Navbar';
 
 const { Footer } = Layout;
 

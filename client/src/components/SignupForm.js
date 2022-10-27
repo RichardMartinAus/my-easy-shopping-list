@@ -43,10 +43,14 @@ function SignupForm() {
 
   return (
     <>
+      <h2 className="centered-text">
+        Please fill out the fields below to create an account
+      </h2>
       <Form
         name="basic"
+        className="form-background"
         labelCol={{
-          span: 8,
+          span: 6,
         }}
         wrapperCol={{
           span: 16,
@@ -105,18 +109,15 @@ function SignupForm() {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
+        <Form.Item>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
       </Form>
-      <Link to="/login">← Go to Login</Link>
+      <Button htmlType="submit" block className="btn">
+        <Link to="/login">Back to login!</Link>
+      </Button>
     </>
   );
 }

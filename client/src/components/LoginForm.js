@@ -48,15 +48,16 @@ function LoginForm(props) {
 
   return (
     <>
-      <h1>Please login below</h1>
+      <h2 className="centered-text">Please login below</h2>
       <Form
         name="basic"
-        // labelCol={{
-        //   span: 8,
-        // }}
-        // wrapperCol={{
-        //   span: 16,
-        // }}
+        className="form-background"
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
         initialValues={{
           remember: true,
         }}
@@ -96,18 +97,18 @@ function LoginForm(props) {
         </Form.Item>
 
         <Form.Item
-        // wrapperCol={{
-        //   offset: 8,
-        //   span: 16,
-        // }}
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
         >
           <Button type="primary" htmlType="submit" style={{ float: 'left' }}>
             Login
           </Button>
         </Form.Item>
       </Form>
-      <Button htmlType="submit" style={{ float: 'left' }}>
-        <Link to="/signup">Click here to signup!</Link>
+      <Button htmlType="submit" block className="btn">
+        <Link to="/signup">Click to signup!</Link>
       </Button>
     </>
   );

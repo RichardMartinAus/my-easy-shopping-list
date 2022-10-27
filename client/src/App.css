@@ -1,26 +1,44 @@
 @import '~antd/dist/antd.css';
 
+body {
+  background-color: lightgray;
+}
+
 .site-layout-content {
   min-height: 280px;
-  padding: 24px;
+  padding: 40px;
   background: #fff;
+  border-radius: 5px;
 }
-#components-layout-demo-top .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-.ant-row-rtl #components-layout-demo-top .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
+
+.form-background {
+  padding: 25px 20px 10px 20px;
+  background: #fff;
+  border-radius: 5px;
 }
 
 .logo {
   width: 100%;
   max-width: 280px;
-  /* height: 40px; */
+  padding: 20px;
+}
+
+.centered-text {
+  text-align: center;
+  align-items: center;
+}
+.btn {
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.script-text {
+  font-weight: bolder;
+}
+
+.page-logo {
+  max-width: 600px;
+  height: auto;
   padding: 20px;
 }
 

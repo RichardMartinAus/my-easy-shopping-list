@@ -6,11 +6,23 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    savedLists: [List]
+  }
+
+  type List {
+    listId: ID!
+    listName: String
+    items: [String]
   }
 
   type Auth {
     token: ID
     user: User
+  }
+
+  input ListInput {
+    listName: String
+    items: [String]
   }
 
   type Query {
@@ -20,6 +32,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
+    saveList(listData: ListInput): User
   }
 `;
 

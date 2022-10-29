@@ -34,7 +34,7 @@ const Userdash = () => {
               Welcome back, <strong>{user.username}</strong>!
             </h2>
           ) : null}
-          <Divider orientation="left"></Divider>
+          <Divider></Divider>
           <Row>
             <Col span={8}>
               <SavedLists />

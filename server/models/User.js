@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import schema from List.js
+const listSchema = require('./List');
 
 const userSchema = new Schema({
   username: {
@@ -21,6 +21,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  savedLists: [listSchema],
 });
 
 // hash user password

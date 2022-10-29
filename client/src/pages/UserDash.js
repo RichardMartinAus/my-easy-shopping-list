@@ -1,9 +1,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
-import { Layout, Row, Col } from 'antd';
+import { Layout, Row, Col, Divider } from 'antd';
 import PageHeader from '../components/Header';
 import SavedLists from '../components/SavedLists';
+import ViewList from '../components/ViewList';
+import CreateList from '../components/CreateListForm';
 
 const { Content } = Layout;
 
@@ -32,8 +34,17 @@ const Userdash = () => {
               Welcome back, <strong>{user.username}</strong>!
             </h2>
           ) : null}
+          <Divider orientation="left"></Divider>
           <Row>
-            <SavedLists />
+            <Col span={8}>
+              <SavedLists />
+            </Col>
+            <Col span={8}>
+              <ViewList />
+            </Col>
+            <Col span={8}>
+              <CreateList />
+            </Col>
           </Row>
         </div>
       </Content>

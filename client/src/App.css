@@ -42,6 +42,15 @@ body {
   padding: 20px;
 }
 
+.lists {
+  max-width: 600px;
+}
+
+.list-header {
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
 .fixed-footer {
   position: fixed;
   width: 100%;

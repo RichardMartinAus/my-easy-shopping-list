@@ -1,26 +1,23 @@
 import React from 'react';
-import { Layout, Card } from 'antd';
+import { Col, List } from 'antd';
 
-const { Content } = Layout;
+// const { Content } = Layout;
+const data = ['Weekly essentials', 'Monthly big shop', 'Weekend quick shop'];
 
 const SavedLists = () => {
   return (
-    <Layout className="layout">
-      <>
-        <Content>
-          <Card
-            title="Your saved lists"
-            style={{
-              maxWidth: 400,
-            }}
-          >
-            <p>Weekly essentials</p>
-            <p>Monthly shop</p>
-            <p>Test list</p>
-          </Card>
-        </Content>
-      </>
-    </Layout>
+    <>
+      <Col span={22}>
+        <h2>Your Saved Lists:</h2>
+        <List
+          size="large"
+          className="lists"
+          bordered={true}
+          dataSource={data}
+          renderItem={(item) => <List.Item>{item}</List.Item>}
+        />
+      </Col>
+    </>
   );
 };
 

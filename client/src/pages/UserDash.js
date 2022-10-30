@@ -35,14 +35,14 @@ const Userdash = () => {
             </h2>
           ) : null}
           <Divider></Divider>
-          <Row>
-            <Col span={8}>
+          <Row wrap={true}>
+            <Col className="column" flex="1 0 33%">
               <SavedLists />
             </Col>
-            <Col span={8}>
+            <Col className="column" flex="1 0 33%">
               <ViewList />
             </Col>
-            <Col span={8}>
+            <Col className="column" flex="1 0 33%">
               <CreateList />
             </Col>
           </Row>

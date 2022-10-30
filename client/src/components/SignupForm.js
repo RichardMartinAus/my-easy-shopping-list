@@ -43,9 +43,6 @@ function SignupForm() {
 
   return (
     <>
-      <h2 className="centered-text">
-        Please fill out the fields below to create an account
-      </h2>
       <Form
         name="basic"
         className="form-background"
@@ -63,6 +60,9 @@ function SignupForm() {
         onFinish={onFinish}
         autoComplete="off"
       >
+        <h2 className="centered-text">
+          Fill in the fields below to create an account
+        </h2>
         <Form.Item
           label="Username"
           name="username"

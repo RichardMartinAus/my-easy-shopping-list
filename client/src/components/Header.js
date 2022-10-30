@@ -1,52 +1,59 @@
-import React, { Component } from 'react';
-import Auth from '../utils/auth';
-import { Link } from 'react-router-dom';
-import { Drawer, Layout, Menu, Button } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Layout, Button, Drawer } from 'antd';
+import { MenuOutlined } from '@ant-design/icons';
 import whiteLogo from '../assets/images/logo-white.svg';
+import RightMenu from './RightMenu';
 
-const { Header } = Layout;
+// THIS MENU CODE IS ADAPTED FROM thisuraseniya ON GITHUB: https://github.com/thisuraseniya/Ant-Design-Navbar
 
 const PageHeader = () => {
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <Menu theme="dark" mode="horizontal" style={{ float: 'right' }}>
-          <Menu.Item key="1">
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Link to="/user">Dashboard</Link>
-          </Menu.Item>
-          <Menu.Item key="3" onClick={() => Auth.logout()}>
-            <Link to="/">Logout</Link>
-          </Menu.Item>
-        </Menu>
-      );
-    } else {
-      return (
-        <Menu theme="dark" mode="horizontal" style={{ float: 'right' }}>
-          <Menu.Item key="1">
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="2">
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-        </Menu>
-      );
-    }
-  }
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(!visible);
+  };
+
+  let { pathname: location } = useLocation();
+  useEffect(() => {
+    setVisible(false);
+  }, [location]);
 
   return (
-    <Layout className="layout">
-      <Header>
-        <img
-          className="logo"
-          src={whiteLogo}
-          alt="My Easy Shopping List logo in white"
-        />
-        {showNavigation()}
-      </Header>
-    </Layout>
+    <nav className="navbar">
+      <Layout>
+        <Layout.Header className="mainheader">
+          <div className="logo">
+            <a href="/">
+              <img
+                className="logo"
+                src={whiteLogo}
+                alt="My Easy Shopping List logo in white"
+              />
+            </a>
+          </div>
+          <div className="navbar-menu">
+            <Button
+              className="menuButton"
+              type="text"
+              style={{ color: 'white' }}
+              onClick={showDrawer}
+            >
+              <MenuOutlined />
+            </Button>
+
+            <Drawer
+              placement="right"
+              closable={true}
+              onClose={showDrawer}
+              visible={visible}
+              style={{ zIndex: 99999 }}
+            >
+              <RightMenu mode={'inline'} />
+            </Drawer>
+          </div>
+        </Layout.Header>
+      </Layout>
+    </nav>
   );
 };
 

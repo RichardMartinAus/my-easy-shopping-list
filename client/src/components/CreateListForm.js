@@ -3,12 +3,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Col, Button, Form, Input, Space } from 'antd';
-import { ADD_LIST } from '../utils/mutations';
+import { SAVE_LIST } from '../utils/mutations';
 
 const CreateList = () => {
   let listname = '';
+  const [formState, setFormState] = useState({
+    listname: '',
+    items: [''],
+  });
   const onFinish = (values: any) => {
     console.log('Received values of form:', values);
+
+    setFormState('');
   };
 
   //   const [formState, setFormState] = useState({
@@ -76,7 +82,7 @@ const CreateList = () => {
         </Form.List>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Submit
+            Save List
           </Button>
         </Form.Item>
       </Form>

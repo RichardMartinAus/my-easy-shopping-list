@@ -15,9 +15,12 @@ const PageFooter = () => {
         >
           Created by Richard Martin using React and Ant Design ©2022
           <br></br>
-          <a href="https://github.com/RichardMartinAus/my-easy-shopping-list">
-            View this source code on GitHub
-          </a>
+          <p>
+            <a href="https://github.com/RichardMartinAus/my-easy-shopping-list">
+              View this source code on GitHub
+            </a>{' '}
+            • Background image by Aleksandar Pasaric on Pexels.com
+          </p>
         </Footer>
       </>
     </Layout>

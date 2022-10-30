@@ -2,6 +2,8 @@
 
 body {
   background-color: lightgray;
+  background-image: url('./assets/images/pexels-aleksandar-pasaric-3423860.jpg');
+  background-position: center;
 }
 
 .site-layout-content {
@@ -11,6 +13,13 @@ body {
   border-radius: 5px;
 }
 
+.mainheader {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .form-background {
   padding: 25px 20px 10px 20px;
   background: #fff;
@@ -18,15 +27,18 @@ body {
 }
 
 .logo {
+  height: auto;
   width: 100%;
-  max-width: 280px;
-  padding: 20px;
+  max-width: 450px;
+  padding: 30px;
+  margin-top: 10px;
 }
 
 .centered-text {
   text-align: center;
   align-items: center;
 }
+
 .btn {
   margin-top: 20px;
   border-radius: 5px;
@@ -38,6 +50,7 @@ body {
 
 .page-logo {
   max-width: 600px;
+  width: 100%;
   height: auto;
   padding: 20px;
 }
@@ -56,4 +69,15 @@ body {
   width: 100%;
   left: 0;
   bottom: 0;
+  height: 90px;
+}
+
+@media screen and (max-width: 992px) {
+  .column {
+    flex: 100% !important;
+  }
+
+  h2 {
+    margin-top: 20px !important;
+  }
 }

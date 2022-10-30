@@ -48,7 +48,6 @@ function LoginForm(props) {
 
   return (
     <>
-      <h2 className="centered-text">Please login below</h2>
       <Form
         name="basic"
         className="form-background"
@@ -66,6 +65,7 @@ function LoginForm(props) {
         onFinish={onFinish}
         autoComplete="off"
       >
+        <h2 className="centered-text">Please login below</h2>
         <Form.Item
           label="Username"
           name="username"

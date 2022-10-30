@@ -107,7 +107,7 @@ function LoginForm(props) {
           </Button>
         </Form.Item>
       </Form>
-      <Button htmlType="submit" block className="btn">
+      <Button type="primary" htmlType="submit" block className="btn">
         <Link to="/signup">Click to signup!</Link>
       </Button>
     </>

@@ -115,7 +115,7 @@ function SignupForm() {
           </Button>
         </Form.Item>
       </Form>
-      <Button htmlType="submit" block className="btn">
+      <Button type="primary" htmlType="submit" block className="btn">
         <Link to="/login">Back to login!</Link>
       </Button>
     </>

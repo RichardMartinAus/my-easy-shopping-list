@@ -15,7 +15,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Userdash from './pages/UserDash';
-// import PageHeader from './components/Header';
+import ViewSingleList from './pages/ViewSingleList';
 import PageFooter from './components/Footer';
 
 const httpLink = createHttpLink({
@@ -47,6 +47,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/user" element={<Userdash />} />
+            <Route path="/listview" element={<ViewSingleList />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}

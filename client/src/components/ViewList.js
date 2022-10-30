@@ -1,7 +1,7 @@
 import React from 'react';
-import { Col, List } from 'antd';
+import { Link } from 'react-router-dom';
+import { Col, List, Button } from 'antd';
 
-// const { Content } = Layout;
 const data = [
   'Bread',
   'Milk',
@@ -26,6 +26,9 @@ const ViewList = () => {
           dataSource={data}
           renderItem={(item) => <List.Item>{item}</List.Item>}
         />
+        <Button type="primary" htmlType="submit" block className="btn">
+          <Link to="/listview">View this list</Link>
+        </Button>
       </Col>
     </>
   );

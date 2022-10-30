@@ -7,14 +7,14 @@ import { SAVE_LIST } from '../utils/mutations';
 
 const CreateList = () => {
   let listname = '';
-  const [formState, setFormState] = useState({
-    listname: '',
-    items: [''],
-  });
+  // const [formState, setFormState] = useState({
+  //   listname: '',
+  //   items: [''],
+  // });
   const onFinish = (values: any) => {
     console.log('Received values of form:', values);
 
-    setFormState('');
+    // setFormState('');
   };
 
   //   const [formState, setFormState] = useState({
@@ -81,7 +81,7 @@ const CreateList = () => {
           )}
         </Form.List>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" block>
             Save List
           </Button>
         </Form.Item>

@@ -59,9 +59,16 @@ body {
   max-width: 600px;
 }
 
-.list-header {
-  background-color: cornflowerblue;
-  color: #fff;
+.singlelist {
+  max-width: 600px;
+  min-width: 300px;
+  background-color: #fff;
+}
+
+.listbackground {
+  background-color: #fff;
+  padding: 10px 40px 30px 40px;
+  border-radius: 5px;
 }
 
 .fixed-footer {

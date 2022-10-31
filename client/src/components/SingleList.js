@@ -22,7 +22,7 @@ const SingleList = () => {
   return (
     <>
       <Col className="listbackground">
-        <h2>Your Selected List:</h2>
+        <h2>Weekly essentials</h2>
         <List
           size="large"
           className="singlelist"

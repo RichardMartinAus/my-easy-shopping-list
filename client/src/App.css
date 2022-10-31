@@ -61,8 +61,9 @@ body {
 
 .singlelist {
   max-width: 600px;
-  min-width: 300px;
+  min-width: auto;
   background-color: #fff;
+  text-align: left;
 }
 
 .listbackground {

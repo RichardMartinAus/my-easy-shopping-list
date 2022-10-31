@@ -18,7 +18,7 @@ const ViewList = () => {
   return (
     <>
       <Col span={22}>
-        <h2>Your Selected List:</h2>
+        <h2>Weekly essentials</h2>
         <List
           size="large"
           className="lists"

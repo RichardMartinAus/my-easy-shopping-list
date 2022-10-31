@@ -14,8 +14,6 @@ function LoginForm(props) {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    console.log(values);
-
     try {
       const mutationResponse = await login({
         variables: {
@@ -61,7 +59,6 @@ function LoginForm(props) {
           remember: true,
         }}
         noValidate
-        // validated={validated}
         onFinish={onFinish}
         autoComplete="off"
       >

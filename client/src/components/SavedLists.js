@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, List } from 'antd';
 
-// const { Content } = Layout;
 const data = ['Weekly essentials', 'Monthly big shop', 'Weekend quick shop'];
 
 const SavedLists = () => {

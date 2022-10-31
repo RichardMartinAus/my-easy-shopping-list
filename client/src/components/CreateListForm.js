@@ -7,39 +7,10 @@ import { SAVE_LIST } from '../utils/mutations';
 
 const CreateList = () => {
   let listname = '';
-  // const [formState, setFormState] = useState({
-  //   listname: '',
-  //   items: [''],
-  // });
-  const onFinish = (values: any) => {
-    console.log('Received values of form:', values);
 
+  const onFinish = (values: any) => {
     // setFormState('');
   };
-
-  //   const [formState, setFormState] = useState({
-  //     listname: '',
-  //     items: [''],
-  //   });
-  //   const [addList] = useMutation(ADD_LIST);
-  //   const navigate = useNavigate();
-
-  //   const onFinish = async (values) => {
-  //     try {
-  //       const mutationResponse = await addList({
-  //         variables: {
-  //           listname: values.listname,
-  //           items: values.items,
-  //         },
-  //       });
-  //       const token = mutationResponse.data.addList.token;
-  //       Auth.login(token);
-  //       // useNavigate
-  //       navigate('/user');
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
 
   return (
     <>

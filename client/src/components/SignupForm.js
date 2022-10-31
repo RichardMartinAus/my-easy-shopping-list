@@ -56,7 +56,6 @@ function SignupForm() {
           remember: true,
         }}
         noValidate
-        // validated={validated}
         onFinish={onFinish}
         autoComplete="off"
       >
